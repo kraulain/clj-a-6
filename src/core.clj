@@ -5,3 +5,6 @@
 (defn reverse [ls]
   (into () ls))
 
+(defn sum [nums]
+  (reduce + 0 nums))
+
