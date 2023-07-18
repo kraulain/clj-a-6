@@ -31,3 +31,11 @@
   {:storeid store
    :upstream []
    :waiting []})
+
+(defn update-some [v k f & args]
+  (if (contains? v k)
+    (apply update v k f args)
+    v))
+
+(defn uuid []
+  (str (UUID/randomUUID)))
