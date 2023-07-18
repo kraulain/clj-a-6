@@ -11,3 +11,12 @@
 (defn min [nums]
   (assert (not (empty? nums)))
   (first (sort nums)))
+
+(defn video-id [video]
+  (-> video
+      :metadata
+      :connections
+      :comments
+      :uri
+      (->> (re-find #"videos/(\d+)"))
+      second))
