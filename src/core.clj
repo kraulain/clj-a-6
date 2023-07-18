@@ -23,3 +23,11 @@
 
 (defn strip-query [url]
   (str/replace url #"[?].*" ""))
+
+(declare sync)
+
+
+(defn sync-store [store]
+  {:storeid store
+   :upstream []
+   :waiting []})
