@@ -8,3 +8,6 @@
 (defn sum [nums]
   (reduce + 0 nums))
 
+(defn min [nums]
+  (assert (not (empty? nums)))
+  (first (sort nums)))
