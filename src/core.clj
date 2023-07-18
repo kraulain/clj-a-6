@@ -20,3 +20,6 @@
       :uri
       (->> (re-find #"videos/(\d+)"))
       second))
+
+(defn strip-query [url]
+  (str/replace url #"[?].*" ""))
