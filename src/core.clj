@@ -49,3 +49,31 @@
 (defn save-email! [email]
   {:pre [(valid? email)]}
   true)
+
+;; this won't work
+(gen/sample (gen/such-that #(re-matches email-re %) gen/string-ascii))
+
+(def gen-email-char (gen/such-that #(re-matches #"[^<>()\[\]\.,;:\s@\"]" (str %))
+                                   gen/char-ascii))
+
+(def gen-email-string (gen/not-empty (gen/fmap str/join (gen/vector gen-email-char))))
+
+(def gen-regular-email-name (gen/fmap
+                             (fn [[n1 nn]]
+                               (str/join "." (cons n1 nn)))
+                             (gen/tuple gen-email-string
+                                        (gen/vector gen-email-string))))
+(def gen-irregular-email-name (gen/fmap
+                               #(str \" % \")
+                               (gen/not-empty gen/string-ascii)))
+
+(def gen-email-name (gen/frequency [[10 gen-regular-email-name]
+                                    [1 gen-irregular-email-name]]))
+
+(def gen-email-domain (gen/fmap
+                       (fn [[hns tld1 tld2]]
+                         ;; hns is vector, so add at the end
+                        (str/join "." (conj hns (str tld1 tld2))))
+                       (gen/tuple (gen/not-empty (gen/vector gen-email-string))
+                                  gen-email-string
+                                  gen-email-string)))
