@@ -77,3 +77,30 @@
                        (gen/tuple (gen/not-empty (gen/vector gen-email-string))
                                   gen-email-string
                                   gen-email-string)))
+
+(def gen-email (gen/fmap
+                (fn [[name domain]]
+                  (str name
+                       "@"
+                       domain))
+                (gen/tuple gen-email-name
+                           gen-email-domain)))
+
+(def gen-email-name2 (gen/elements ["bob"
+                                    "suzy"
+                                    "john"
+                                    "jill"]))
+(def gen-email-domain2 (gen/elements ["gmail.com"
+                                      "hotmail.com"
+                                      "example.com"
+                                      "yahoo.com"]))
+
+(def gen-char-digit (gen/elements (vec "0123456789"))) 
+
+(def gen-email2 (gen/fmap
+                 (fn [[name n domain]]
+                   (str name (str/join n) "@" domain))
+                 (gen/tuple gen-email-name2
+                            (gen/vector gen-char-digit 0 4)
+                            gen-email-domain2)))
+
