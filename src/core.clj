@@ -104,3 +104,23 @@
                             (gen/vector gen-char-digit 0 4)
                             gen-email-domain2)))
 
+(comment
+  (gen/sample gen-email-char)
+  (gen/sample gen-email-string)
+  (gen/sample gen-email2)
+
+  (tc/quick-check 100
+                  (prop/for-all [email gen-email2]
+                                (re-matches email-re email)))
+
+
+  )
+
+
+
+(comment
+
+  (re-matches email-re "eric@lispcast.com")
+  (re-matches email-re "a@dfsfs.cm")
+
+  )
