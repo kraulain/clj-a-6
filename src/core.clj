@@ -45,3 +45,7 @@
 
 (defn valid? [email]
   (boolean (re-matches email-re email)))
+
+(defn save-email! [email]
+  {:pre [(valid? email)]}
+  true)
