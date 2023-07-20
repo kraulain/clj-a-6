@@ -145,3 +145,7 @@
 
 (defn kv-get [store key]
   (get @store key))
+
+(defn kv-put [store key value]
+  (swap! store assoc key value)
+  nil)
