@@ -124,3 +124,13 @@
   (re-matches email-re "a@dfsfs.cm")
 
   )
+
+;; score counter
+
+(defn new-counter []
+  (atom 0))
+
+(defn increment [counter diff]
+  (assert (not (neg? diff)))
+  (swap! counter + diff)
+  nil)
