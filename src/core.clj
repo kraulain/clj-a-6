@@ -134,3 +134,6 @@
   (assert (not (neg? diff)))
   (swap! counter + diff)
   nil)
+
+(defn counter-value [counter]
+  @counter)
