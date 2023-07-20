@@ -137,3 +137,11 @@
 
 (defn counter-value [counter]
   @counter)
+
+;; key-value store
+
+(defn new-kv-store []
+  (atom {}))
+
+(defn kv-get [store key]
+  (get @store key))
