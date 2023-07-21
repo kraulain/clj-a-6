@@ -153,3 +153,7 @@
 (defn kv-del [store key]
   (swap! store dissoc key)
   nil)
+
+(defn kv-clr [store]
+  (reset! store {})
+  nil)
