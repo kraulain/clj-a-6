@@ -149,3 +149,7 @@
 (defn kv-put [store key value]
   (swap! store assoc key value)
   nil)
+
+(defn kv-del [store key]
+  (swap! store dissoc key)
+  nil)
