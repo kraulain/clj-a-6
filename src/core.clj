@@ -157,3 +157,8 @@
 (defn kv-clr [store]
   (reset! store {})
   nil)
+
+(s/def ::age-range (s/and
+                    int?
+                    (fn [a] (<= 18 a 120))))
+
