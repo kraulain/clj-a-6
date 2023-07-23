@@ -165,3 +165,6 @@
 (s/def ::age-range2 (s/int-in 18 121))
 
 (s/def ::birth-year (s/inst-in #inst "1980" #inst "1990"))
+
+(s/def ::temp-in-new-orleans (s/double-in :min -11.7 :max 38.9 :NaN? false :infinite? false))
+
