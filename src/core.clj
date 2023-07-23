@@ -168,3 +168,23 @@
 
 (s/def ::temp-in-new-orleans (s/double-in :min -11.7 :max 38.9 :NaN? false :infinite? false))
 
+(s/def ::names-with-A (s/and
+                       string?
+                       (fn [n] (str/starts-with? n "A"))))
+
+(s/def ::names-with-A2 (s/with-gen
+                         (s/and
+                          string?
+                          (fn [n] (str/starts-with? n "A")))
+                         (fn []
+                           (s/gen #{"Aaron" "Alice" "Amanda" "Allen"}))))
+
+(s/def ::names-with-A3 (s/with-gen
+                         (s/and
+                          string?
+                          (fn [n] (str/starts-with? n "A")))
+                         (fn []
+                           (sgen/fmap (fn [chars]
+                                        (str "A" (str/lower-case (apply str chars))))
+                                      (sgen/vector (sgen/char-alpha))))))
+
