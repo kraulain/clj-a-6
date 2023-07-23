@@ -162,3 +162,6 @@
                     int?
                     (fn [a] (<= 18 a 120))))
 
+(s/def ::age-range2 (s/int-in 18 121))
+
+(s/def ::birth-year (s/inst-in #inst "1980" #inst "1990"))
