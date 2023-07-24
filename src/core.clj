@@ -193,3 +193,18 @@
 ;; 3. Construct a generator using clojure.spec.gen.alpha
 ;; 4. Construct a generator using clojure.test.check.generators
 
+(comment
+  (s/valid? ::birth-year #inst "1985")
+  (s/valid? ::temp-in-new-orleans 20.0)
+
+  (s/valid? ::names-with-A2 "Albert")
+
+  (str/starts-with? 1 "A")
+
+  (s/conform (s/cat :year ::birth-year) [#inst "1975"])
+
+  )
+
+(s/def ::person-tuple (s/cat :name ::names-with-A3
+                             :dob ::birth-year
+                             :temp ::temp-in-new-orleans))
