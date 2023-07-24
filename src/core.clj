@@ -188,3 +188,8 @@
                                         (str "A" (str/lower-case (apply str chars))))
                                       (sgen/vector (sgen/char-alpha))))))
 
+;; 1. Use the generator that spec builds for you.
+;; 2. Steal the generator from another spec.
+;; 3. Construct a generator using clojure.spec.gen.alpha
+;; 4. Construct a generator using clojure.test.check.generators
+
