@@ -208,3 +208,20 @@
 (s/def ::person-tuple (s/cat :name ::names-with-A3
                              :dob ::birth-year
                              :temp ::temp-in-new-orleans))
+
+(comment
+
+  (s/valid? ::age-range 50)
+  ;; => true
+  (s/valid? ::age-range 18)
+  ;; => true
+  (s/valid? ::age-range 10)
+  ;; => false
+
+  (s/valid? ::age-range "10")
+  ;; => false
+
+
+  (s/valid? pos? "aa")
+  
+  )
