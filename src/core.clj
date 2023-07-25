@@ -253,3 +253,6 @@
       (merge (mergesort* (subvec v 0 half))
              (mergesort* (subvec v half))))))
 
+(defn mergesort [ls]
+  (mergesort* (vec ls)))
+
