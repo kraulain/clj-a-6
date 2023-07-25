@@ -243,3 +243,13 @@
      :else
      (cons (first l2) (merge l1 (rest l2))))))
 
+(defn mergesort* [v]
+  (case (count v)
+    0 ()
+    1 (seq v)
+
+    ;; else
+    (let [half (quot (count v) 2)]
+      (merge (mergesort* (subvec v 0 half))
+             (mergesort* (subvec v half))))))
+
