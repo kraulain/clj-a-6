@@ -256,3 +256,11 @@
 (defn mergesort [ls]
   (mergesort* (vec ls)))
 
+
+(tc/quick-check 100 (prop/for-all [v (gen/vector gen/nat)]
+                                  (not (contains? (set v) 17)))
+                :reporter-fn (fn [res]
+                               (when (= :shrink-step (:type res))
+                                 (prn (get-in res [:shrinking :args])
+                                      (get-in res [:shrinking :smallest])))))
+3
