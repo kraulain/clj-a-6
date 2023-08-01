@@ -263,4 +263,4 @@
                                (when (= :shrink-step (:type res))
                                  (prn (get-in res [:shrinking :args])
                                       (get-in res [:shrinking :smallest])))))
-3
+
