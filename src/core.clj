@@ -264,3 +264,4 @@
                                  (prn (get-in res [:shrinking :args])
                                       (get-in res [:shrinking :smallest])))))
 
+;; eval new spec functions
